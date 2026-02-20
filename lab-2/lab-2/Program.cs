@@ -1,5 +1,14 @@
 ﻿using lab_2;
 
+var person = new Person(
+    "Алексей",
+    "Абакумов",
+    "Викторович",
+    new DateTime(2005, 7, 15),
+    "ул. Гагарина, д.60",
+    "+79001234533"
+);
+
 var student1 = new Student(
     "Иван", 
     "Иванов", 
@@ -29,19 +38,22 @@ Group group340 = new Group(340);
 group340.Add(student1);
 group340.Add(student2);
 
-Console.WriteLine("Метод ToString() класса Group");
+Console.WriteLine("Метод ToString() класса Person:");
+Console.WriteLine(person.ToString());
+
+Console.WriteLine("Метод ToString() класса Group:");
 Console.WriteLine(group340.ToString());
 
-Console.WriteLine("Переопределние индексатора для класса Group");
+Console.WriteLine("Переопределние индексатора для класса Group:");
 Console.WriteLine(group340[1]);
 
-Console.WriteLine("Метод GetInfo() у класса Student");
+Console.WriteLine("Метод GetInfo() у класса Student:");
 Console.WriteLine(student1.GetInfo());
 
-Console.WriteLine("Метод Equals() у класса Student");
+Console.WriteLine("Метод Equals() у класса Student:");
 Console.WriteLine(student2.Equals(student1));
 
-Console.WriteLine("Переопределние операций == и != ");
+Console.WriteLine("Переопределние операций == и != :");
 Console.WriteLine(student1 != student2);
 
 
