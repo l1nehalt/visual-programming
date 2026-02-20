@@ -36,7 +36,13 @@ public class Person
         }
         return false;
     }
-    
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(FirstName, LastName, Patronymic, DateOfBirth, Adress, PhoneNumber);
+    }
+
+
     public override string ToString()
     {
         return $"{FirstName} {LastName} {Patronymic}";
