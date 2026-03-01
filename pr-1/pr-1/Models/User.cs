@@ -20,6 +20,12 @@ public class User
     
     public RoleUser Role { get; set; }
     
+    public List<Report> Reports { get; set; }
+    
+    public List<Proposal> Proposals { get; set; }
+    
+    public List<Login> Logins { get; set; }
+    
     public void Login() {}
     
     public void AddProposal() {}

@@ -16,6 +16,8 @@ public class Applicant
     
     public char TelephoneNumber { get; set; }
     
+    public Proposal Proposal { get; set; }
+    
     public void Insert() {}
     
     public void Update() {}

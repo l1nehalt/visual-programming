@@ -6,6 +6,8 @@ public class Department
     
     public string Name { get; set; }
     
+    public List<User> Users { get; set; }
+    
     public void Insert() {}
     
     public void Update() {}

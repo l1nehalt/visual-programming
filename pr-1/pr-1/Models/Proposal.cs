@@ -4,7 +4,9 @@ namespace pr_1.Models;
 
 public class Proposal
 {
+    
     public string Code {get; set;}
+    
     
     public string Title {get; set;}
     
@@ -13,6 +15,10 @@ public class Proposal
     public DateTime Date {get; set;}
 
     public StatusProposal Status { get; set; } = StatusProposal.Waiting;
+    
+    public Applicant Applicant { get; set; }
+    
+    public Report Report { get; set; }
     
     public void View() {}
     
