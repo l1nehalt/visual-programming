@@ -15,4 +15,9 @@ public abstract class Figure
         Name = name;
         Color = color;
     }
+
+    public override string ToString()
+    {
+        return $" Фигура: {Name} \n Цвет: {Color} \n Периметр: {Perimeter} \n Площадь: {Area}";
+    }
 }

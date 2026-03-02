@@ -14,7 +14,11 @@ public class RegularPolygon : Figure
         SideLength = sideLength;
     }
 
-    public override double Perimeter => NumberOfSides * SideLength;
+    public override double Perimeter => NumberOfSides > 0 && SideLength > 0
+        ? NumberOfSides * SideLength
+        : throw new Exception("invalid parameters");
 
-    public override double Area => (NumberOfSides * Math.Pow(SideLength, 2)) / (4 * Math.Tan(Math.PI / NumberOfSides));
+    public override double Area => NumberOfSides > 0 && SideLength > 0
+        ? (NumberOfSides * Math.Pow(SideLength, 2)) / (4 * Math.Tan(Math.PI / NumberOfSides))
+        : throw new Exception("invalid parameters");
 }

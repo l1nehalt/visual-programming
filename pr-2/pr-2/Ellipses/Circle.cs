@@ -11,7 +11,11 @@ public class Circle : Figure
         Radius = radius;
     }
 
-    public override double Perimeter => 2 * Math.PI * Radius;
-    
-    public override double Area => Math.PI * Radius * Radius;
+    public override double Perimeter => Radius > 0
+        ? 2 * Math.PI * Radius
+        : throw new Exception("invalid parameters");
+
+    public override double Area => Radius > 0
+        ? Math.PI * Radius * Radius
+        : throw new Exception("invalid parameters");
 }

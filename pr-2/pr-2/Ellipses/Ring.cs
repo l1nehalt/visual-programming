@@ -9,7 +9,11 @@ public class Ring : Circle
         InnerRadius = innerRadius;
     }
 
-    public override double Perimeter => 2 * Math.PI * (Radius + InnerRadius);
+    public override double Perimeter => InnerRadius > 0
+        ? Math.PI * (Radius + InnerRadius)
+        : throw new Exception("invalid parameters");
 
-    public override double Area => Math.PI * (Math.Pow(Radius, 2) - Math.Pow(InnerRadius, 2));
+    public override double Area => InnerRadius > 0
+        ? Math.PI * (Math.Pow(Radius, 2) - Math.Pow(InnerRadius, 2))
+        : throw new Exception("invalid parameters");
 }

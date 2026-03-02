@@ -16,8 +16,13 @@ public class Parallelogram : Figure
         SideB = sideB;
         Angle = angle;
     }
-    
-    public override double Perimeter => 2 * (SideA + SideB);
-    
-    public override double Area => SideA * SideB * Math.Sin(Angle * Math.PI / 180);
+
+    public override double Perimeter => SideA > 0 && SideB > 0 && Angle > 0
+        ? 2 * (SideA + SideB)
+        : throw new Exception("invalid parameters");
+
+
+    public override double Area => SideA > 0 && SideB > 0 && Angle > 0
+        ? SideA * SideB * Math.Sin(Angle * Math.PI / 180)
+        : throw new Exception("invalid parameters");
 }
