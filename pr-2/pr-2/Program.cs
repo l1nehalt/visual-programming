@@ -1,4 +1,13 @@
-﻿using pr_2.Polygons;
+﻿using pr_2.Abstractions;
+using pr_2.Polygons;
 
-var par = new Parallelogram("Параллелограмм", "Синий", 30, 50, 60);
-Console.WriteLine(par.ToString());
+Figure par = new Parallelogram("Параллелограмм", "Синий", 30, 50, 60);
+Figure rect = new Rectangle("Ректангл", "Синий", 30, 50);
+Figure rhomb = new Rhombus("Ромбус", "Синий", 30, 50);
+List<Figure> figures = [
+    rect,
+    rhomb,
+    par
+];
+
+figures.ForEach(figure => Console.WriteLine(figure.ToString()));

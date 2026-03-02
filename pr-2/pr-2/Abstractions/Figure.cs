@@ -18,6 +18,6 @@ public abstract class Figure
 
     public override string ToString()
     {
-        return $" Фигура: {Name} \n Цвет: {Color} \n Периметр: {Perimeter} \n Площадь: {Area}";
+        return $" Фигура: {Name} \n Цвет: {Color} \n Периметр: {Perimeter} \n Площадь: {Area}\n";
     }
 }
