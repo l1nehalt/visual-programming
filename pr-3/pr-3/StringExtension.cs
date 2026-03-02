@@ -2,7 +2,7 @@
 
 public static class StringExtension
 {
-    public static void GetInfo(this string str)
+    public static StringInfo GetInfo(this string str)
     {
         var stringInfo = new StringInfo
         {
@@ -11,6 +11,6 @@ public static class StringExtension
             CountOfLetters = str.Count(char.IsLetter),
         };
         
-        Console.WriteLine($"Длина: {stringInfo.Length} \nКол-во цифр: {stringInfo.CountOfDigits} \nКол-во букв: {stringInfo.CountOfLetters}");
+        return stringInfo;
     }
 }

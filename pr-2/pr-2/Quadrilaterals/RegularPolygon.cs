@@ -4,9 +4,9 @@ namespace pr_2.Quadrilaterals;
 
 public class RegularPolygon : Figure
 {
-    public int NumberOfSides { get; set; }
+    private int _numberOfSides;
     
-    public double SideLength { get; set; }
+    private double _sideLength;
     
     public RegularPolygon(string name, string color, int numberOfSides, double sideLength) : base(name, color)
     {
@@ -14,11 +14,27 @@ public class RegularPolygon : Figure
         SideLength = sideLength;
     }
 
-    public override double Perimeter => NumberOfSides > 0 && SideLength > 0
-        ? NumberOfSides * SideLength
-        : throw new Exception("invalid parameters");
+    public int NumberOfSides
+    {
+        get => _numberOfSides;
+        set
+        {
+            if (value <= 0) throw new Exception("Number of sides should be greater than 0");
+            _numberOfSides = value;
+        }
+    }
 
-    public override double Area => NumberOfSides > 0 && SideLength > 0
-        ? (NumberOfSides * Math.Pow(SideLength, 2)) / (4 * Math.Tan(Math.PI / NumberOfSides))
-        : throw new Exception("invalid parameters");
+    public double SideLength
+    {
+        get => _sideLength;
+        set
+        {
+            if (value <= 0) throw new Exception("Side length should be greater than 0");
+            _sideLength = value;
+        }
+    }
+
+    public override double Perimeter => NumberOfSides * SideLength;
+
+    public override double Area => NumberOfSides * Math.Pow(SideLength, 2) / (4 * Math.Tan(Math.PI / NumberOfSides));
 }

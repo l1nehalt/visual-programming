@@ -2,4 +2,6 @@
 
 string str = "123abed";
 
-str.GetInfo();
+var result = str.GetInfo();
+
+Console.WriteLine($"Длина: {result.Length}\nЧисло цифр: {result.CountOfDigits}\nЧисло букв: {result.CountOfLetters}");

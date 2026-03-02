@@ -7,4 +7,5 @@ public struct StringInfo
     public int CountOfDigits { get; set; }
     
     public int CountOfLetters { get; set; }
+    
 }

@@ -29,6 +29,9 @@ Group group340 = new Group(340);
 group340.Add(student1);
 group340.Add(student2);
 
+group340.GetStudents();
+
+/*
 Console.WriteLine("Метод ToString() класса Group");
 Console.WriteLine(group340.ToString());
 
@@ -43,6 +46,7 @@ Console.WriteLine(student2.Equals(student1));
 
 Console.WriteLine("Переопределние операций == и != ");
 Console.WriteLine(student1 != student2);
+*/
 
 
 
