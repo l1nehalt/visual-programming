@@ -8,7 +8,7 @@ public class Person
     
     public string? Patronymic  { get; }
     
-    public DateTime DateOfBirth { get; }
+    public DateTime DateOfBirth { get; set; }
     
     public string Adress { get; }
     

@@ -1,10 +1,12 @@
-﻿namespace lab_2;
+﻿using System.Collections;
 
-public class Group
+namespace lab_2;
+
+public class Group : ICloneable
 {
     public int GroupId { get; }
 
-    public Student[] Students { get; set; } = Array.Empty<Student>();
+    public List<Student> Students { get; set; } = new List<Student>();
 
     public Group(int groupId)
     {
@@ -18,14 +20,9 @@ public class Group
             throw new Exception($"Студент с №{student.Id} уже существует");
         }
         
-        Student[] newStudents = new Student[Students.Length + 1];
-
-        for (int i = 0; i < Students.Length; i++)
-        {
-            newStudents[i] = Students[i];
-        }
+        List<Student> newStudents = new List<Student>();
         
-        newStudents[newStudents.Length - 1] = student;
+        newStudents.Add(student);
         
         Students = newStudents;
     }
@@ -37,7 +34,7 @@ public class Group
             throw new Exception($"Студента по №{id} не существует");
         }
 
-        Students = Students.Where(s => s.Id != id).ToArray();
+        Students = (List<Student>)Students.Where(s => s.Id != id);
     }
     
     public string this[int id]
@@ -68,4 +65,30 @@ public class Group
         
         return result;
     }
+
+    public object Clone()
+    {
+        var newGroup = new Group(GroupId);
+        newGroup.Students = Students;
+        return newGroup;
+    }
+
+    /*public object Clone()
+    {
+        var newGroup = new Group(GroupId);
+
+        newGroup.Students = new List<Student>();
+        
+        Students.ForEach(s =>
+        {
+            Student student = new Student(
+                s.FirstName, s.LastName, s.Patronymic,
+                s.DateOfBirth, s.Adress, s.PhoneNumber,
+                s.Id, s.Nationality, s.EducationForm
+            );
+            newGroup.Students.Add(student);
+        });
+        
+        return newGroup;
+    }*/
 }

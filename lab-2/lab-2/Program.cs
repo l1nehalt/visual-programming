@@ -1,18 +1,6 @@
 ﻿using lab_2;
 
-var student1 = new Student(
-    "Иван", 
-    "Иванов", 
-    "Иванович", 
-    new DateTime(2003, 5, 15),
-    "ул. Пушкина, д. 10", 
-    "+79001234567", 
-    1, 
-    "Русский", 
-    EducationForm.Budget 
-);
-
-var student2 = new Student(
+var student = new Student(
     "Петр", 
     "Сергеев", 
     "Иванович", 
@@ -26,10 +14,13 @@ var student2 = new Student(
 
 Group group340 = new Group(340);
 
-group340.Add(student1);
-group340.Add(student2);
+group340.Add(student);
 
-group340.GetStudents();
+Group group341 = (Group)group340.Clone();
+
+student.DateOfBirth = new DateTime(2006, 7, 15);
+
+group341.GetStudents();
 
 /*
 Console.WriteLine("Метод ToString() класса Group");
