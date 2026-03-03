@@ -7,7 +7,7 @@ public class Matrix : ICloneable
     public uint Rows { get; }
     public uint Columns { get; }
     
-    private readonly double[,] _elements;
+    private double[,] _elements;
     
     public Matrix(uint rows, uint columns)
     {
