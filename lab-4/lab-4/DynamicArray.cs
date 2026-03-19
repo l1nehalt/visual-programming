@@ -24,6 +24,31 @@ public class DynamicArray<T> : IEnumerable<T>
         Count = 0;
     }
 
+    public IEnumerable<T> Filter(Func<T, bool> predicate)
+    {
+        foreach (var item in _items)
+        {
+            if (predicate(item))
+            {
+                yield return item;
+            }
+        }
+    }
+
+    public void Sort(Func<T, T, int> comparator)
+    {
+        for (int i = 0; i < Count; i++)
+        {
+            for (int j = 0; j < Count - 1 - i; j++)
+            {
+                if (comparator(_items[j], _items[j + 1]) > 0)
+                {
+                    (_items[j], _items[j + 1]) = (_items[j + 1], _items[j]);
+                }
+            }
+        }
+    }
+
     public void Add(T element)
     {
         if (Count == Capacity)

@@ -1,4 +1,4 @@
-﻿using lab_4;
+﻿/*using lab_4;
 
 DynamicArray<int> numbers = new DynamicArray<int>();
         
@@ -56,4 +56,25 @@ using (var enumerator = numbers.GetEnumerator())
     }
 }
         
+Console.WriteLine();*/
+
+
+using lab_4;
+
+var array = new DynamicArray<int> {5, 3, 1, 7, 10};
+
+var res = array.Filter(x => x > 5);
+
+foreach (var item in res)
+{
+    Console.Write(item + " ");
+}
+
 Console.WriteLine();
+
+array.Sort((a, b) => a - b);
+
+foreach (var item in array)
+{
+    Console.Write(item + " ");
+}
