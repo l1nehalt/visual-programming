@@ -18,8 +18,7 @@ public class DynamicArrayEnumerator<T> : IEnumerator<T>
     {
         get
         {
-            if (_position < 0 || _position >= _count)
-                throw new InvalidOperationException();
+            if (_position < 0 || _position >= _count) throw new InvalidOperationException();
             return _array[_position];
         }
     }

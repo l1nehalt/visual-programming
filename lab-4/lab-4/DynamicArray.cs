@@ -11,7 +11,7 @@ public class DynamicArray<T> : IEnumerable<T>
 
     public DynamicArray()
     {
-        _items = new T[20];
+        _items = new T[100000];
         Count = 0;
     }
 
@@ -63,7 +63,7 @@ public class DynamicArray<T> : IEnumerable<T>
     public void Add(IEnumerable<T> elements)
     {
         if (elements == null)
-            throw new ArgumentNullException(nameof(elements));
+            throw new ArgumentNullException();
 
         int elementsCount = 0;
         foreach (var element in elements)
@@ -92,6 +92,25 @@ public class DynamicArray<T> : IEnumerable<T>
         {
             IncreaseCapacity(1);
         }
+        
+        if (position < Count)
+        {
+            Array.Copy(_items, position, _items, position + 1, Count - position);
+        }
+
+        _items[position] = element;
+        Count++;
+    }
+    
+    public void Insert1(T element, int position)
+    {
+        if (position < 0 || position > Count)
+            throw new IndexOutOfRangeException("Позиция вне диапазона");
+
+        if (Count == Capacity)
+        {
+            IncreaseCapacity(1);
+        }
 
         for (int i = Count; i > position; i--)
         {
@@ -106,24 +125,24 @@ public class DynamicArray<T> : IEnumerable<T>
     {
         if (position < 0 || position >= Count)
             throw new IndexOutOfRangeException("Позиция вне диапазона");
-
-        for (int i = position; i < Count - 1; i++)
+        
+        if (position < Count - 1)
         {
-            _items[i] = _items[i + 1];
+            Array.Copy(_items, position + 1, _items, position, Count - position - 1);
         }
 
         _items[Count - 1] = default(T);
         Count--;
     }
 
-    public void IncreaseCapacity(int n)
+    private void IncreaseCapacity(int n)
     {
         if (n <= 0)
             throw new ArgumentException("Количество элементов должно быть положительным");
 
-        T[] newArray = new T[Capacity + n];
+        var newArray = new T[Capacity + n];
         
-        for (int i = 0; i < Count; i++)
+        for (var i = 0; i < Count; i++)
         {
             newArray[i] = _items[i];
         }
@@ -151,3 +170,6 @@ public class DynamicArray<T> : IEnumerable<T>
         }
     }
 }
+
+// при добавлении по индексу попрбовать перемещать остальную часть массива не целиком а одним блоком памяти оценить бестродейтвие
+// посмотреть unsafe код С#
