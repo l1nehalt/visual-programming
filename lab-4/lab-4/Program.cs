@@ -81,8 +81,16 @@ using lab_4;
 
 var array = new DynamicArray<int> {5, 3, 1, 7, 10};
 
-var res = array.Filter(x => x > 5);
 
+
+bool Predicate1(int x) => x > 5;
+
+Func<int, bool> del = new Func<int, bool>(Predicate1);
+
+
+var res = array.Filter(Predicate1);
+
+Console.Write("Результат метода Filter: ");
 foreach (var item in res)
 {
     Console.Write(item + " ");
@@ -92,7 +100,10 @@ Console.WriteLine();
 
 array.Sort((a, b) => a - b);
 
+Console.Write("Результат метода Sort: ");
 foreach (var item in array)
 {
     Console.Write(item + " ");
 }
+
+Console.WriteLine();
