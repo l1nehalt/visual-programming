@@ -37,7 +37,18 @@ public class Figure
     
     public void Process(Func<Action<int>, bool, char, string> func)
     {
-        string res = func(UpdateSide, true, 'f');
+        var res = func(delegate(int value)
+        {
+            if (value > 0)
+            {
+                Side = value * 2;
+            }
+            else
+            {
+                Side = value - 10;
+            }
+        }, true, 'f');
+        
         Console.WriteLine($"Результат: {res}, Side = {Side}");
     }
 

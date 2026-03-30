@@ -25,11 +25,11 @@ public class Dog
         {
             case '+':
                 Age = func(true);
-                Console.WriteLine($"Собака: {name},\nВозраст: {Age} ({name} помолодел)");
+                Console.WriteLine($"Собака: {name},\nВозраст: {Age} ({name} постарел)");
                 break;
             case '-':
                 Age = func(false);
-                Console.WriteLine($"Собака: {name},\nВозраст: {Age} ({name} постарел)");
+                Console.WriteLine($"Собака: {name},\nВозраст: {Age} ({name} помолодел)");
                 break;
         }
     }

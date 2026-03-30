@@ -19,15 +19,7 @@ Dog dog = new Dog(10, "Бублик");
 
 dog.ExecuteAndHandle(dog.PrintResult);
 
-
-//
-
 Figure figure = new Figure(5);
 
 figure.Process(figure.PrintSignAndHandler);
-
-
-
-
-
 
