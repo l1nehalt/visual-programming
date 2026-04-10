@@ -2,14 +2,11 @@
 
 public class Shop
 {
-    private List<Item> items = new List<Item>();
+    private readonly List<Item> _items = [];
 
     public void AddItem(Item item)
     {
-        if (items.Any(i => i.Article == item.Article))
-        {
-            throw new ExistingItemCodeException(item);
-        }
-        items.Add(item);
+        if (_items.Any(i => i.Article == item.Article)) throw new ExistingItemCodeException(item);
+        _items.Add(item);
     }
 }

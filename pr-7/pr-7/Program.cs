@@ -9,9 +9,9 @@ var cap = new Item(2, "Cap", "green", 1300);
 var hap = new Item(2, "Hap", "white", 1000);
 var jeans = new Item(3, "Jeans", "black", 3200);
 
-List<Item> items = new List<Item> { shirt, jacket, cap, hap, jeans };
+List<Item> items = [shirt, jacket, cap, hap, jeans];
 
-foreach (var item in items)
+items.ForEach(item =>
 {
     try
     {
@@ -21,9 +21,6 @@ foreach (var item in items)
     catch (ExistingItemCodeException e)
     {
         Console.WriteLine(e.Message);
-        foreach (DictionaryEntry d in e.Data)
-        {
-            Console.WriteLine(d.Key + ": " + d.Value);
-        }
+        foreach (DictionaryEntry d in e.Data) Console.WriteLine(d.Key + ": " + d.Value);
     }
-}
+});

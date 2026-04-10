@@ -4,9 +4,9 @@ public class Item
 {
     public int Article;
 
-    public string Name;
-
     public string Color;
+
+    public string Name;
 
     public int Price;
 
