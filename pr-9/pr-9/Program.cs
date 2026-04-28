@@ -1,6 +1,24 @@
 ﻿var path1 = @"C:\temp\K1";
 var path2 = @"C:\temp\K2";
 
+// Топ 3 самых больших файла в каталоге приложения
+
+var filePaths = Directory.GetFiles(Directory.GetCurrentDirectory()).ToList();
+
+var files = new List<FileInfo>();
+filePaths.ForEach(path => files.Add(new FileInfo(path)));
+
+var biggestFiles = files
+    .OrderByDescending(info => info.Length)
+    .Take(3)
+    .ToList();
+
+foreach (var file in biggestFiles)
+{
+    Console.WriteLine($"{file.Name}, {file.Length} байт");
+}
+
+/*
 var dir1 = Directory.CreateDirectory(path1);
 var dir2 = Directory.CreateDirectory(path2);
 
@@ -100,4 +118,4 @@ if (Directory.Exists(path3))
 else
 {
     Console.WriteLine("Папка All не найдена.");
-}
+}*/
