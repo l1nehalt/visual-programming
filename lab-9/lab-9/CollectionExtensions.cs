@@ -58,4 +58,19 @@ public static class CollectionExtensions
             }
         }
     }
+    
+    public static TAccumulate Reduce<TSource, TAccumulate>(
+        this IEnumerable<TSource> source, 
+        TAccumulate seed, 
+        Func<TAccumulate, TSource, TAccumulate> aggregator)
+    {
+        TAccumulate result = seed;
+
+        foreach (var item in source)
+        {
+            result = aggregator(result, item);
+        }
+
+        return result;
+    }
 }
