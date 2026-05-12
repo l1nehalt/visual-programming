@@ -20,7 +20,7 @@ namespace lab_12
         private string _name;
         private string _manufacturer;
         private decimal _price;
-        private readonly string _dbPath = @"D:\Projects\Visual-Programming\lab-12\supply.db";
+        private readonly string _dbPath = @"C:\PROJECTS\C#Projects\visual-programming\lab-12\supply.db";
 
         public AddItemForm()
         {
@@ -140,7 +140,6 @@ namespace lab_12
                         Price = _price
                     });
                 }
-                MessageBox.Show("Данные сохранены!", "Успех", MessageBoxButtons.OK);
             }
             catch (Exception ex)
             {

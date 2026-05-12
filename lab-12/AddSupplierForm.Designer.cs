@@ -34,73 +34,93 @@
             // 
             // lblId
             // 
-            this.lblId.Location = new System.Drawing.Point(12, 9);
+            this.lblId.Location = new System.Drawing.Point(16, 11);
+            this.lblId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(100, 23);
+            this.lblId.Size = new System.Drawing.Size(133, 28);
+            this.lblId.TabIndex = 9;
             this.lblId.Text = "ID Поставщика";
-            // 
-            // txtId
-            // 
-            this.txtId.Location = new System.Drawing.Point(15, 26);
-            this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(236, 20);
-            this.txtId.Validating += new System.ComponentModel.CancelEventHandler(this.txtId_Validating);
             // 
             // lblName
             // 
-            this.lblName.Location = new System.Drawing.Point(12, 59);
+            this.lblName.Location = new System.Drawing.Point(16, 73);
+            this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(100, 23);
-            this.lblName.Text = "Наименование";
-            // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(15, 76);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(236, 20);
-            this.txtName.Validating += new System.ComponentModel.CancelEventHandler(this.txtName_Validating);
+            this.lblName.Size = new System.Drawing.Size(133, 28);
+            this.lblName.TabIndex = 7;
+            this.lblName.Text = "Имя";
             // 
             // lblAddress
             // 
-            this.lblAddress.Location = new System.Drawing.Point(12, 109);
+            this.lblAddress.Location = new System.Drawing.Point(16, 134);
+            this.lblAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(100, 23);
+            this.lblAddress.Size = new System.Drawing.Size(133, 28);
+            this.lblAddress.TabIndex = 5;
             this.lblAddress.Text = "Адрес";
-            // 
-            // txtAddress
-            // 
-            this.txtAddress.Location = new System.Drawing.Point(15, 126);
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(236, 20);
             // 
             // lblPhone
             // 
-            this.lblPhone.Location = new System.Drawing.Point(12, 159);
+            this.lblPhone.Location = new System.Drawing.Point(16, 196);
+            this.lblPhone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Size = new System.Drawing.Size(100, 23);
+            this.lblPhone.Size = new System.Drawing.Size(133, 28);
+            this.lblPhone.TabIndex = 3;
             this.lblPhone.Text = "Телефон";
+            // 
+            // txtId
+            // 
+            this.txtId.Location = new System.Drawing.Point(20, 32);
+            this.txtId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(313, 22);
+            this.txtId.TabIndex = 8;
+            this.txtId.Validating += new System.ComponentModel.CancelEventHandler(this.txtId_Validating);
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(20, 94);
+            this.txtName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(313, 22);
+            this.txtName.TabIndex = 6;
+            this.txtName.Validating += new System.ComponentModel.CancelEventHandler(this.txtName_Validating);
+            // 
+            // txtAddress
+            // 
+            this.txtAddress.Location = new System.Drawing.Point(20, 155);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(313, 22);
+            this.txtAddress.TabIndex = 4;
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(15, 176);
+            this.txtPhone.Location = new System.Drawing.Point(20, 217);
+            this.txtPhone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPhone.Mask = "8 (000) 000-00-00";
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(236, 20);
+            this.txtPhone.Size = new System.Drawing.Size(313, 22);
+            this.txtPhone.TabIndex = 2;
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(95, 215);
+            this.btnAdd.Location = new System.Drawing.Point(127, 265);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.Size = new System.Drawing.Size(100, 28);
+            this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Добавить";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(176, 215);
+            this.btnCancel.Location = new System.Drawing.Point(235, 265);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(100, 28);
+            this.btnCancel.TabIndex = 0;
             this.btnCancel.Text = "Отмена";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -111,10 +131,10 @@
             // 
             // AddSupplierForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(379, 321);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtPhone);
@@ -126,6 +146,7 @@
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.lblId);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddSupplierForm";
@@ -134,6 +155,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion

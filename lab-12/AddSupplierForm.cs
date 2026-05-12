@@ -3,13 +3,13 @@ using SQLite;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace lab_12
 {
     public partial class AddSupplierForm : Form
     {
-        private readonly string _dbPath = @"D:\Projects\Visual-Programming\lab-12\supply.db";
+        private readonly string _dbPath = @"C:\PROJECTS\C#Projects\visual-programming\lab-12\supply.db";
+        private Supplier _editableSupplier = null;
 
         public AddSupplierForm()
         {
@@ -20,33 +20,41 @@ namespace lab_12
 
         public AddSupplierForm(Supplier supplier) : this()
         {
-            txtId.Text = supplier.ID.ToString();
-            txtName.Text = supplier.Name;
-            txtAddress.Text = supplier.Address;
-            txtPhone.Text = supplier.Phone;
+            _editableSupplier = supplier;
+
+            txtId.Text = _editableSupplier.ID.ToString();
+            txtName.Text = _editableSupplier.Name;
+            txtAddress.Text = _editableSupplier.Address;
+            txtPhone.Text = _editableSupplier.Phone;
 
             txtId.ReadOnly = true;
-
             btnAdd.Text = "Сохранить";
             this.Text = "Редактировать поставщика";
         }
 
-
         private void txtId_Validating(object sender, CancelEventArgs e)
         {
-            if (!int.TryParse(txtId.Text, out _))
+            if (!long.TryParse(txtId.Text, out long idValue))
             {
-                errorProvider.SetError(txtId, "ID должен быть числом!");
-                e.Cancel = true;
+                errorProvider.SetError(txtId, "ID должен быть целым числом!");
+                e.Cancel = true; 
             }
-            else { errorProvider.SetError(txtId, ""); }
+            else if (idValue <= 0)
+            {
+                errorProvider.SetError(txtId, "ID должен быть больше нуля!");
+                e.Cancel = true; 
+            }
+            else
+            {
+                errorProvider.SetError(txtId, "");
+            }
         }
 
         private void txtName_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtName.Text))
             {
-                errorProvider.SetError(txtName, "Введите наименование!");
+                errorProvider.SetError(txtName, "Введите ФИО!");
                 e.Cancel = true;
             }
             else { errorProvider.SetError(txtName, ""); }
@@ -60,20 +68,21 @@ namespace lab_12
                 {
                     using (var db = new SQLiteConnection(_dbPath))
                     {
-                        db.Insert(new Supplier
+                        db.InsertOrReplace(new Supplier
                         {
-                            ID = int.Parse(txtId.Text),
+                            ID = long.Parse(txtId.Text),
                             Name = txtName.Text,
                             Address = txtAddress.Text,
                             Phone = txtPhone.Text
                         });
                     }
+
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Ошибка! Возможно, такой ID уже есть.");
+                    MessageBox.Show("Ошибка при сохранении: " + ex.Message);
                 }
             }
         }
