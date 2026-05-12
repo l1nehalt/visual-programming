@@ -7,6 +7,37 @@ namespace pr_11
             InitializeComponent();
             pictureBox.Visible = false;
             imageMenuItem.Visible = false;
+            UpdateUndoRedoButtons();
+            SetupShortcuts();
+            SetSaveButtonsEnabled(false);
+        }
+
+        private void SetupShortcuts()
+        {
+            îòìåíèòüToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Z;
+            îòìåíèòüToolStripMenuItem.ShowShortcutKeys = true;
+
+            âåğíóòüToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Y;
+            âåğíóòüToolStripMenuItem.ShowShortcutKeys = true;
+
+            openFileMenuItem.ShortcutKeys = Keys.Control | Keys.O;
+            openFileMenuItem.ShowShortcutKeys = true;
+
+            ñîõğàíèòüToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.S;
+            ñîõğàíèòüToolStripMenuItem.ShowShortcutKeys = true;
+        }
+
+        private void UpdateUndoRedoButtons()
+        {
+
+            îòìåíèòüToolStripMenuItem.Enabled = _undoStack != null && _undoStack.Count > 0;
+            âåğíóòüToolStripMenuItem.Enabled = _redoStack != null && _redoStack.Count > 0;
+        }
+
+        private void SetSaveButtonsEnabled(bool state)
+        {
+            ñîõğàíèòüToolStripMenuItem.Enabled = state;
+            saveAsMenuItem.Enabled = state;
         }
 
         private void openFileMenuItem_Click(object sender, EventArgs e)
@@ -28,6 +59,11 @@ namespace pr_11
 
                 pictureBox.Visible = true;
                 imageMenuItem.Visible = true;
+
+                _undoStack.Clear();
+                _redoStack.Clear();
+                SetSaveButtonsEnabled(true);
+                UpdateUndoRedoButtons();
             }
         }
 
@@ -63,12 +99,19 @@ namespace pr_11
         {
             _undoStack.Push(new Bitmap(pictureBox.Image));
             _redoStack.Clear();
+            UpdateUndoRedoButtons();
         }
 
         private void filterMenuItem_Click(object sender, EventArgs e)
         {
-            var resultBitmap = ImageProcess.FilterImage(_sourceImage);
+            if (pictureBox.Image == null) return;
+
+            TakeSnapshot();
+
+            var resultBitmap = ImageProcess.SharpenImage((Bitmap)pictureBox.Image);
             pictureBox.Image = resultBitmap;
+
+            UpdateUndoRedoButtons();
         }
 
         private void ìàòğèöàËàïëàñàToolStripMenuItem_Click(object sender, EventArgs e)
@@ -89,14 +132,9 @@ namespace pr_11
         {
             if (_undoStack.Count > 0)
             {
-
                 _redoStack.Push(new Bitmap(pictureBox.Image));
-
                 pictureBox.Image = _undoStack.Pop();
-            }
-            else
-            {
-                MessageBox.Show("Áîëüøå íå÷åãî îòìåíÿòü!");
+                UpdateUndoRedoButtons();
             }
         }
 
@@ -105,8 +143,9 @@ namespace pr_11
             if (_redoStack.Count > 0)
             {
                 _undoStack.Push(new Bitmap(pictureBox.Image));
-
                 pictureBox.Image = _redoStack.Pop();
+
+                UpdateUndoRedoButtons();
             }
         }
 
@@ -125,6 +164,11 @@ namespace pr_11
                     MessageBox.Show("Îøèáêà ïğè ñîõğàíåíèè: " + ex.Message);
                 }
             }
+        }
+
+        private void exitMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

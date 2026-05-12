@@ -49,10 +49,12 @@
             // 
             // menuStrip
             // 
+            menuStrip.ImageScalingSize = new Size(20, 20);
             menuStrip.Items.AddRange(new ToolStripItem[] { fileMenuItem, imageMenuItem, отменитьToolStripMenuItem, вернутьToolStripMenuItem });
             menuStrip.Location = new Point(0, 0);
             menuStrip.Name = "menuStrip";
-            menuStrip.Size = new Size(648, 24);
+            menuStrip.Padding = new Padding(7, 3, 0, 3);
+            menuStrip.Size = new Size(741, 30);
             menuStrip.TabIndex = 0;
             menuStrip.Text = "menuStrip1";
             // 
@@ -60,83 +62,88 @@
             // 
             fileMenuItem.DropDownItems.AddRange(new ToolStripItem[] { openFileMenuItem, сохранитьToolStripMenuItem, saveAsMenuItem, exitMenuItem });
             fileMenuItem.Name = "fileMenuItem";
-            fileMenuItem.Size = new Size(48, 20);
+            fileMenuItem.Size = new Size(59, 24);
             fileMenuItem.Text = "Файл";
             // 
             // openFileMenuItem
             // 
             openFileMenuItem.Name = "openFileMenuItem";
-            openFileMenuItem.Size = new Size(180, 22);
+            openFileMenuItem.Size = new Size(224, 26);
             openFileMenuItem.Text = "Открыть";
             openFileMenuItem.Click += openFileMenuItem_Click;
             // 
             // сохранитьToolStripMenuItem
             // 
             сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            сохранитьToolStripMenuItem.Size = new Size(180, 22);
+            сохранитьToolStripMenuItem.ShowShortcutKeys = false;
+            сохранитьToolStripMenuItem.Size = new Size(224, 26);
             сохранитьToolStripMenuItem.Text = "Сохранить";
             сохранитьToolStripMenuItem.Click += сохранитьToolStripMenuItem_Click;
             // 
             // saveAsMenuItem
             // 
             saveAsMenuItem.Name = "saveAsMenuItem";
-            saveAsMenuItem.Size = new Size(180, 22);
+            saveAsMenuItem.Size = new Size(224, 26);
             saveAsMenuItem.Text = "Сохранить как";
             saveAsMenuItem.Click += saveAsMenuItem_Click;
             // 
             // exitMenuItem
             // 
             exitMenuItem.Name = "exitMenuItem";
-            exitMenuItem.Size = new Size(180, 22);
+            exitMenuItem.Size = new Size(224, 26);
             exitMenuItem.Text = "Выход";
+            exitMenuItem.Click += exitMenuItem_Click;
             // 
             // imageMenuItem
             // 
             imageMenuItem.DropDownItems.AddRange(new ToolStripItem[] { filterMenuItem, матрицаЛапласаToolStripMenuItem, матрицаГауссаToolStripMenuItem });
             imageMenuItem.Name = "imageMenuItem";
-            imageMenuItem.Size = new Size(95, 20);
+            imageMenuItem.Size = new Size(121, 24);
             imageMenuItem.Text = "Изображение";
             // 
             // filterMenuItem
             // 
             filterMenuItem.Name = "filterMenuItem";
-            filterMenuItem.Size = new Size(172, 22);
+            filterMenuItem.Size = new Size(216, 26);
             filterMenuItem.Text = "Обработать";
             filterMenuItem.Click += filterMenuItem_Click;
             // 
             // матрицаЛапласаToolStripMenuItem
             // 
             матрицаЛапласаToolStripMenuItem.Name = "матрицаЛапласаToolStripMenuItem";
-            матрицаЛапласаToolStripMenuItem.Size = new Size(172, 22);
+            матрицаЛапласаToolStripMenuItem.Size = new Size(216, 26);
             матрицаЛапласаToolStripMenuItem.Text = "Матрица Лапласа";
             матрицаЛапласаToolStripMenuItem.Click += матрицаЛапласаToolStripMenuItem_Click;
             // 
             // матрицаГауссаToolStripMenuItem
             // 
             матрицаГауссаToolStripMenuItem.Name = "матрицаГауссаToolStripMenuItem";
-            матрицаГауссаToolStripMenuItem.Size = new Size(172, 22);
+            матрицаГауссаToolStripMenuItem.Size = new Size(216, 26);
             матрицаГауссаToolStripMenuItem.Text = "Матрица Гаусса";
             матрицаГауссаToolStripMenuItem.Click += матрицаГауссаToolStripMenuItem_Click;
             // 
             // отменитьToolStripMenuItem
             // 
+            отменитьToolStripMenuItem.Enabled = false;
             отменитьToolStripMenuItem.Name = "отменитьToolStripMenuItem";
-            отменитьToolStripMenuItem.Size = new Size(73, 20);
+            отменитьToolStripMenuItem.Size = new Size(91, 24);
             отменитьToolStripMenuItem.Text = "Отменить";
             отменитьToolStripMenuItem.Click += отменитьToolStripMenuItem_Click;
             // 
             // вернутьToolStripMenuItem
             // 
+            вернутьToolStripMenuItem.Enabled = false;
             вернутьToolStripMenuItem.Name = "вернутьToolStripMenuItem";
-            вернутьToolStripMenuItem.Size = new Size(63, 20);
+            вернутьToolStripMenuItem.Size = new Size(79, 24);
             вернутьToolStripMenuItem.Text = "Вернуть";
             вернутьToolStripMenuItem.Click += вернутьToolStripMenuItem_Click;
             // 
             // pictureBox
             // 
-            pictureBox.Location = new Point(12, 27);
+            pictureBox.Location = new Point(14, 36);
+            pictureBox.Margin = new Padding(3, 4, 3, 4);
             pictureBox.Name = "pictureBox";
-            pictureBox.Size = new Size(624, 370);
+            pictureBox.Size = new Size(713, 493);
             pictureBox.TabIndex = 1;
             pictureBox.TabStop = false;
             // 
@@ -146,12 +153,13 @@
             // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(648, 409);
+            ClientSize = new Size(741, 545);
             Controls.Add(pictureBox);
             Controls.Add(menuStrip);
             MainMenuStrip = menuStrip;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "MainForm";
             Text = "MainForm";
             menuStrip.ResumeLayout(false);
