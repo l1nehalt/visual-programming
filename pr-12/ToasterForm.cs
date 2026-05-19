@@ -76,7 +76,7 @@ namespace pr_12
             }
             else
             {
-                doneness = "Уголек (пережарился!)";
+                doneness = "Уголек (";
             }
 
             string message = $"Ваш хлеб готов!\n\n" +
