@@ -28,6 +28,7 @@
             typeBread = new Label();
             timeCooking = new Label();
             progressBarCooking = new ProgressBar();
+            btnStop = new Button();
             ((System.ComponentModel.ISupportInitialize)numericTime).BeginInit();
             SuspendLayout();
             // 
@@ -35,10 +36,11 @@
             // 
             comboBoxBreadType.Font = new Font("Segoe UI", 12F);
             comboBoxBreadType.FormattingEnabled = true;
-            comboBoxBreadType.Items.AddRange(new object[] { "Белый", "Ржаной", "Цельнозерновой" });
-            comboBoxBreadType.Location = new Point(20, 45);
+            comboBoxBreadType.Items.AddRange(new object[] { "Белый", "Черный" });
+            comboBoxBreadType.Location = new Point(23, 60);
+            comboBoxBreadType.Margin = new Padding(3, 4, 3, 4);
             comboBoxBreadType.Name = "comboBoxBreadType";
-            comboBoxBreadType.Size = new Size(200, 29);
+            comboBoxBreadType.Size = new Size(228, 36);
             comboBoxBreadType.TabIndex = 0;
             // 
             // radioOneSlice
@@ -46,9 +48,10 @@
             radioOneSlice.AutoSize = true;
             radioOneSlice.Checked = true;
             radioOneSlice.Font = new Font("Segoe UI", 12F);
-            radioOneSlice.Location = new Point(20, 95);
+            radioOneSlice.Location = new Point(22, 104);
+            radioOneSlice.Margin = new Padding(3, 4, 3, 4);
             radioOneSlice.Name = "radioOneSlice";
-            radioOneSlice.Size = new Size(93, 25);
+            radioOneSlice.Size = new Size(116, 32);
             radioOneSlice.TabIndex = 1;
             radioOneSlice.TabStop = true;
             radioOneSlice.Text = "1 ломтик";
@@ -58,9 +61,10 @@
             // 
             radioTwoSlices.AutoSize = true;
             radioTwoSlices.Font = new Font("Segoe UI", 12F);
-            radioTwoSlices.Location = new Point(140, 95);
+            radioTwoSlices.Location = new Point(22, 144);
+            radioTwoSlices.Margin = new Padding(3, 4, 3, 4);
             radioTwoSlices.Name = "radioTwoSlices";
-            radioTwoSlices.Size = new Size(101, 25);
+            radioTwoSlices.Size = new Size(126, 32);
             radioTwoSlices.TabIndex = 2;
             radioTwoSlices.TabStop = true;
             radioTwoSlices.Text = "2 ломтика";
@@ -69,20 +73,22 @@
             // numericTime
             // 
             numericTime.Font = new Font("Segoe UI", 12F);
-            numericTime.Location = new Point(20, 165);
+            numericTime.Location = new Point(23, 220);
+            numericTime.Margin = new Padding(3, 4, 3, 4);
             numericTime.Maximum = new decimal(new int[] { 60, 0, 0, 0 });
             numericTime.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numericTime.Name = "numericTime";
-            numericTime.Size = new Size(200, 29);
+            numericTime.Size = new Size(229, 34);
             numericTime.TabIndex = 3;
             numericTime.Value = new decimal(new int[] { 5, 0, 0, 0 });
             // 
             // btnStart
             // 
             btnStart.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            btnStart.Location = new Point(20, 215);
+            btnStart.Location = new Point(22, 262);
+            btnStart.Margin = new Padding(3, 4, 3, 4);
             btnStart.Name = "btnStart";
-            btnStart.Size = new Size(200, 40);
+            btnStart.Size = new Size(229, 40);
             btnStart.TabIndex = 4;
             btnStart.Text = "Поджарить";
             btnStart.UseVisualStyleBackColor = true;
@@ -92,9 +98,9 @@
             // 
             lblTimerDisplay.AutoSize = true;
             lblTimerDisplay.Font = new Font("Segoe UI", 12F, FontStyle.Italic);
-            lblTimerDisplay.Location = new Point(20, 315);
+            lblTimerDisplay.Location = new Point(23, 420);
             lblTimerDisplay.Name = "lblTimerDisplay";
-            lblTimerDisplay.Size = new Size(190, 21);
+            lblTimerDisplay.Size = new Size(237, 28);
             lblTimerDisplay.TabIndex = 5;
             lblTimerDisplay.Text = "Тостер готов к работе";
             // 
@@ -107,9 +113,9 @@
             // 
             typeBread.AutoSize = true;
             typeBread.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            typeBread.Location = new Point(20, 20);
+            typeBread.Location = new Point(22, 28);
             typeBread.Name = "typeBread";
-            typeBread.Size = new Size(84, 21);
+            typeBread.Size = new Size(107, 28);
             typeBread.TabIndex = 6;
             typeBread.Text = "Вид хлеба:";
             // 
@@ -117,25 +123,40 @@
             // 
             timeCooking.AutoSize = true;
             timeCooking.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            timeCooking.Location = new Point(20, 140);
+            timeCooking.Location = new Point(23, 188);
             timeCooking.Name = "timeCooking";
-            timeCooking.Size = new Size(156, 21);
+            timeCooking.Size = new Size(199, 28);
             timeCooking.TabIndex = 7;
             timeCooking.Text = "Время прожарки (с):";
             // 
             // progressBarCooking
             // 
-            progressBarCooking.Location = new Point(20, 275);
+            progressBarCooking.Location = new Point(23, 367);
+            progressBarCooking.Margin = new Padding(3, 4, 3, 4);
             progressBarCooking.Name = "progressBarCooking";
-            progressBarCooking.Size = new Size(250, 25);
+            progressBarCooking.Size = new Size(228, 33);
             progressBarCooking.TabIndex = 8;
             progressBarCooking.Visible = false;
             // 
+            // btnStop
+            // 
+            btnStop.BackColor = Color.MistyRose;
+            btnStop.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            btnStop.Location = new Point(23, 310);
+            btnStop.Margin = new Padding(3, 4, 3, 4);
+            btnStop.Name = "btnStop";
+            btnStop.Size = new Size(229, 40);
+            btnStop.TabIndex = 9;
+            btnStop.Text = "Остановить";
+            btnStop.UseVisualStyleBackColor = false;
+            btnStop.Click += btnStop_Click;
+            // 
             // ToasterForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(400, 370);
+            ClientSize = new Size(511, 493);
+            Controls.Add(btnStop);
             Controls.Add(progressBarCooking);
             Controls.Add(timeCooking);
             Controls.Add(typeBread);
@@ -145,6 +166,7 @@
             Controls.Add(radioTwoSlices);
             Controls.Add(radioOneSlice);
             Controls.Add(comboBoxBreadType);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "ToasterForm";
             Text = "Имитатор Тостера";
             ((System.ComponentModel.ISupportInitialize)numericTime).EndInit();
@@ -164,5 +186,6 @@
         private Label typeBread;
         private Label timeCooking;
         private ProgressBar progressBarCooking;
+        private Button btnStop;
     }
 }

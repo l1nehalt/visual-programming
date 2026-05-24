@@ -16,11 +16,13 @@ namespace pr_12
             {
                 comboBoxBreadType.SelectedIndex = 0;
             }
+            comboBoxBreadType.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void btnStart_Click(object sender, EventArgs e)
         {
             totalCookingTime = Convert.ToInt32(numericTime.Value);
+
             secondsRemaining = totalCookingTime;
 
             progressBarCooking.Maximum = totalCookingTime;
@@ -33,7 +35,9 @@ namespace pr_12
             radioTwoSlices.Enabled = false;
             numericTime.Enabled = false;
 
-            lblTimerDisplay.Text = $"Жарим... Осталось секунд: {secondsRemaining}";
+            string dots = getDots(secondsRemaining);
+
+            lblTimerDisplay.Text = $"Жарим" + dots + $" \nОсталось секунд: {secondsRemaining}";
 
             toasterTimer.Start();
         }
@@ -42,11 +46,13 @@ namespace pr_12
         {
             secondsRemaining--;
 
+            string dots = getDots(secondsRemaining);
+
             progressBarCooking.Value = totalCookingTime - secondsRemaining;
 
             if (secondsRemaining > 0)
             {
-                lblTimerDisplay.Text = $"Жарим... Осталось секунд: {secondsRemaining}";
+                lblTimerDisplay.Text = $"Жарим" + dots + $" \nОсталось секунд: {secondsRemaining}";
             }
             else
             {
@@ -95,6 +101,44 @@ namespace pr_12
             radioOneSlice.Enabled = true;
             radioTwoSlices.Enabled = true;
             numericTime.Enabled = true;
+        }
+
+        private string getDots(int seconds)
+        {
+            int dotsAmnt = seconds % 3;
+            if (dotsAmnt == 0)
+            {
+                return "...";
+            }
+            else if (dotsAmnt == 1)
+            {
+                return "..";
+            }
+            else
+                return ".";
+        }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            if (secondsRemaining > 0)
+            {
+
+                ResetInterface();
+                toasterTimer.Stop();
+
+                lblTimerDisplay.Text = "Тостер готов к работе";
+                progressBarCooking.Visible = false;
+                progressBarCooking.Value = 0;
+                secondsRemaining = 0;
+
+                string message = "Остановка";
+
+                MessageBox.Show(message, "Тостер завершил работу", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }
