@@ -1,0 +1,104 @@
+﻿@page
+@model WebImageEditor.Pages.IndexModel
+@{
+    ViewData["Title"] = "Редактор изображений";
+}
+
+<div class="container mt-4" style="max-width: 800px; font-family: sans-serif;">
+
+    <div class="card p-4 shadow-sm mb-4">
+        <form method="post" asp-page-handler="Upload" enctype="multipart/form-data">
+            <label class="form-label fw-bold">Шаг 1: Загрузите картинку</label>
+            <div class="input-group">
+                <input type="file" name="file" accept="image/*" class="form-control" required />
+                <button type="submit" class="btn btn-primary px-4">Загрузить</button>
+            </div>
+        </form>
+    </div>
+
+    @if (!string.IsNullOrEmpty(Model.ImagePath))
+    {
+        <div class="card p-3 mb-4 text-center bg-light shadow-sm position-relative">
+            <div id="loader" class="position-absolute top-50 start-50 translate-middle d-none bg-white p-3 rounded shadow" style="z-index: 10;">
+                <div class="spinner-border text-primary" role="status"></div>
+                <div class="mt-2 fw-bold">Применяем фильтр...</div>
+            </div>
+
+            <img id="editableImage" 
+                 src="@Model.ImagePath" 
+                 data-filename="@Model.ImageName"
+                 class="img-fluid rounded shadow-sm mx-auto" 
+                 style="max-height: 450px; object-fit: contain; transition: opacity 0.3s;" 
+                 alt="Редактируемое изображение" />
+        </div>
+
+        <div class="card p-3 shadow-sm bg-white">
+            <label class="form-label fw-bold mb-3">Шаг 2: Примените эффекты или сохраните результат</label>
+            <div class="d-flex flex-wrap gap-2 justify-content-center">
+                <button type="button" class="btn btn-outline-dark" onclick="applyFilter('sharpen')">🔺 Резкость</button>
+                <button type="button" class="btn btn-outline-dark" onclick="applyFilter('blur')">💧 Размытие</button>
+                <button type="button" class="btn btn-outline-dark" onclick="applyFilter('edges')">🖼️ Контуры</button>
+
+                <button type="button" class="btn btn-success ms-md-auto w-sm-100" onclick="downloadImage()">💾 Сохранить на устройство</button>
+            </div>
+        </div>
+    }
+</div>
+
+@Html.AntiForgeryToken()
+
+<script>
+    async function applyFilter(filterType) {
+        const imgElement = document.getElementById('editableImage');
+        const loader = document.getElementById('loader');
+        const imageName = imgElement.getAttribute('data-filename');
+
+        const tokenElement = document.querySelector('input[name="__RequestVerificationToken"]');
+        if (!tokenElement) return;
+        const token = tokenElement.value;
+
+        loader.classList.remove('d-none');
+        imgElement.style.opacity = '0.4';
+
+        try {
+            const response = await fetch('?handler=Filter', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': token
+                },
+                body: JSON.stringify({ imageName: imageName, filterType: filterType })
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                if(data.success) {
+                    const timestamp = new Date().getTime();
+                    imgElement.setAttribute('src', `${data.newSrc}?t=${timestamp}`);
+                    imgElement.setAttribute('data-filename', data.fileName);
+                }
+            } else {
+                const errText = await response.text();
+                alert('Ошибка при обработке: ' + errText);
+            }
+        } catch (error) {
+            console.error('Ошибка:', error);
+            alert('Произошла сетевая ошибка.');
+        } finally {
+            loader.classList.add('d-none');
+            imgElement.style.opacity = '1';
+        }
+    }
+
+    function downloadImage() {
+        const imgElement = document.getElementById('editableImage');
+        const currentSrc = imgElement.getAttribute('src');
+        
+        const link = document.createElement('a');
+        link.href = currentSrc;
+        link.download = 'edited_image_' + new Date().getTime() + '.png';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+</script>
