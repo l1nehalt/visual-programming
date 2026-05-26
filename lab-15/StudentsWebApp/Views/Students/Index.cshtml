@@ -1,4 +1,4 @@
-﻿@model IEnumerable<StudentsWebApp.Models.Student>
+﻿@model IEnumerable<Student>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,8 +13,9 @@
 <form asp-action="Index" method="get" class="mb-3">
     <div class="form-actions no-color d-flex gap-2 align-items-center">
         <p class="margin-bottom-none m-0">
-            Найти по ФИО: <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" class="form-control d-inline-block w-auto" />
-            <input type="submit" value="Поиск" class="btn btn-primary" /> |
+            Найти по ФИО: <input type="text" name="searchString" value="@ViewData["CurrentFilter"]"
+                                 class="form-control d-inline-block w-auto"/>
+            <input type="submit" value="Поиск" class="btn btn-primary"/> |
             <a asp-action="Index">Назад к полному списку</a>
         </p>
     </div>
@@ -22,38 +23,38 @@
 
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Birthdate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Phone)
-            </th>
-            <th></th>
-        </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Birthdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th></th>
+    </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Birthdate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Phone)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
-        }
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Birthdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
     </tbody>
 </table>

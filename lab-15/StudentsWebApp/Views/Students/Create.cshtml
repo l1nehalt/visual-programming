@@ -1,4 +1,4 @@
-﻿@model StudentsWebApp.Models.Student
+﻿@model Student
 
 @{
     ViewData["Title"] = "Create";
@@ -7,28 +7,34 @@
 <h1>Create</h1>
 
 <h4>Student</h4>
-<hr />
+<hr/>
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
+                <input asp-for="Name" class="form-control"/>
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Birthdate" class="control-label"></label>
-                <input asp-for="Birthdate" class="form-control" />
+                <input asp-for="Birthdate" type="date" id="birthdateInput" class="form-control"/>
                 <span asp-validation-for="Birthdate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Phone" class="control-label"></label>
-                <input asp-for="Phone" class="form-control" />
+                <input asp-for="Phone" class="form-control"/>
                 <span asp-validation-for="Phone" class="text-danger"></span>
             </div>
+
+            <div class="form-group mt-3 mb-3">
+                <label class="control-label">Фотография студента</label>
+                <input type="file" name="photoFile" accept="image/*" class="form-control"/>
+            </div>
+
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary"/>
             </div>
         </form>
     </div>
@@ -48,6 +54,10 @@
     <script>
         $(document).ready(function () {
             $('#Phone').inputmask('+7(999)999-99-99');
+
+            // Ограничение даты: выставляем максимальную дату равной сегодняшней
+            const today = new Date().toISOString().split('T')[0];
+            $('#birthdateInput').attr('max', today);
         });
     </script>
 }
