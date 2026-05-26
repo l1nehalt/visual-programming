@@ -22,7 +22,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Test}/{action=CheckDate}");
+    pattern: "{controller=Test}/{action=GetInfo}");
 
 app.MapControllerRoute(
     name: "test",
