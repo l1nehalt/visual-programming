@@ -3,22 +3,81 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="lab_13.MainPage">
 
-    <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-    </StackLayout>
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="15">
 
+            <!-- 1 -->
+            <Label x:Name="batteryLabel"
+                   Text="1. Информация о батарее"
+                   FontAttributes="Bold"/>
+
+            <Button Text="Обновить батарею"
+                    Clicked="BatteryBtn_Clicked"/>
+
+            <Label x:Name="gyroscopeLabel"
+                   Text="Ожидание запуска гироскопа..."
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"/>
+
+            <Button Text="Гироскоп инфо"
+                    Clicked="GyroscopeBtn_Clicked"/>
+
+
+            <!-- 2 -->
+            <Label x:Name="deviceLabel"
+                   Text="2. Информация об устройстве"
+                   FontAttributes="Bold"/>
+
+            <Button Text="Получить инфо"
+                    Clicked="DeviceBtn_Clicked"/>
+
+            <!-- 3 -->
+            <Label x:Name="displayLabel"
+                   Text="3. Информация о дисплее"
+                   FontAttributes="Bold"/>
+
+            <Button Text="Получить инфо экрана"
+                    Clicked="DisplayBtn_Clicked"/>
+
+            <!-- 4 -->
+            <Label Text="4. Управление фонариком"
+                   FontAttributes="Bold"/>
+
+            <Button x:Name="flashBtn"
+                    Text="Включить фонарик"
+                    Clicked="FlashBtn_Clicked"/>
+
+            <!-- 5 -->
+            <Button x:Name="blinkBtn"
+                    Text="Мигать (1 сек)"
+                    Clicked="BlinkBtn_Clicked"/>
+
+            <!-- 6 -->
+            <Label x:Name="screenLabel"
+                   Text="6. Скриншот"
+                   FontAttributes="Bold"/>
+
+            <Button Text="Сделать скриншот"
+                    Clicked="ScreenshotBtn_Clicked"/>
+
+            <Image x:Name="screenshotImage"
+                   HeightRequest="400"
+                   Aspect="AspectFit"/>
+
+            <!-- 7 -->
+            <Label x:Name="contactLabel"
+                   Text="7. Случайный контакт"
+                   FontAttributes="Bold"/>
+
+            <Button Text="Получить контакт"
+                    Clicked="ContactBtn_Clicked"/>
+
+            <!-- 8 -->
+            <Button x:Name="dialBtn"
+                    Text="Передать в звонилку"
+                    IsEnabled="False"
+                    Clicked="DialBtn_Clicked"/>
+
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
