@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:lab_14" x:Class="lab_14.SupplierPage" Title="Карточка поставщика">
+    <StackLayout Padding="20">
+        <Label Text="Название поставщика" />
+        <Entry Text="{Binding Name}" />
+
+        <Label Text="Адрес" />
+        <Entry Text="{Binding Address}" />
+
+        <Label Text="Телефон" />
+        <Entry Text="{Binding Phone}" Keyboard="Telephone" Placeholder="+7 (999) 123-45-67">
+            <Entry.Behaviors>
+                <local:PhoneMaskBehavior />
+            </Entry.Behaviors>
+        </Entry>
+
+        <StackLayout Orientation="Horizontal" Margin="0,20,0,0">
+            <Button Text="Сохранить" Clicked="Save_Clicked" />
+            <Button Text="Удалить" Clicked="Delete_Clicked" />
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

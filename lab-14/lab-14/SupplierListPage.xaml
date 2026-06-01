@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="lab_14.SupplierListPage" Title="Поставщики">
+    <StackLayout Padding="10">
+        <ListView x:Name="supplierList" ItemSelected="OnSupplierSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding Name}" FontSize="Medium"/>
+                            <Label Text="{Binding Phone}" FontSize="Medium"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="Добавить поставщика" Clicked="CreateSupplier" BackgroundColor="Green" TextColor="White"/>
+    </StackLayout>
+</ContentPage>
