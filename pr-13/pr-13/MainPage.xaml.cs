@@ -6,6 +6,7 @@ namespace pr_13
     public partial class MainPage : ContentPage
     {
         private Random _rnd = new Random();
+        private int _clickCount = 0; 
 
         public MainPage()
         {
@@ -21,6 +22,9 @@ namespace pr_13
         {
             var button = (Button)sender;
 
+            _clickCount++;
+            labelCount.Text = $"Кликов: {_clickCount}";
+
             button.BackgroundColor = GetRandomColor();
 
             double maxWidth = mainLayout.Width - button.Width;
@@ -32,7 +36,6 @@ namespace pr_13
             double randomY = _rnd.NextDouble() * maxHeight;
 
             AbsoluteLayout.SetLayoutFlags(button, AbsoluteLayoutFlags.None);
-
             AbsoluteLayout.SetLayoutBounds(button, new Rectangle(randomX, randomY, button.Width, button.Height));
         }
     }
