@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:pr_14.Views"
+       Title="pr_14"
+       x:Class="pr_14.AppShell"
+       
+       Shell.TabBarBackgroundColor="#2196F3"
+       Shell.TabBarForegroundColor="White"
+       Shell.TabBarUnselectedColor="White">
+
+    <TabBar>
+        <ShellContent Title="Text Notes"
+                      Icon="icon_feed.png"
+                      ContentTemplate="{DataTemplate local:TextNotesPage}" />
+
+        <ShellContent Title="About"
+                      Icon="icon_about.png"
+                      ContentTemplate="{DataTemplate local:AboutPage}" />
+    </TabBar>
+
+</Shell>

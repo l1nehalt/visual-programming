@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          android:versionCode="1"
+          android:versionName="1.0"
+          package="com.companyname.pr_14">
+
+	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="33" />
+
+	<application android:label="pr_14.Android" android:theme="@style/MainTheme"></application>
+
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+	<!-- Required only if your app needs to access images or photos that other apps created -->
+
+	<uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+
+	<!-- Required only if your app needs to access videos that other apps created -->
+
+	<uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+
+	<!-- Required only if your app needs to access audio files that other apps created -->
+
+	<uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+
+</manifest>
